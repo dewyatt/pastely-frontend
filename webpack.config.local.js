@@ -69,7 +69,7 @@ const config = {
   },
   resolve: {
     alias: {
-      config: path.resolve('./config.dev.json')
+      config: path.resolve('./config.local.json')
     }
   },
   plugins: [

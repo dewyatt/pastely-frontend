@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist/*",
-    "start": "NODE_ENV=development webpack-dev-server --config webpack.config.dev.js --host 0.0.0.0 --progress --color",
-    "build:webpack": "NODE_ENV=production webpack -p --config webpack.config.prod.js --progress --color",
-    "build": "npm run clean && npm run build:webpack",
+    "start": "NODE_ENV=development webpack-dev-server --config webpack.config.local.js --host 0.0.0.0 --progress --color",
+    "build:webpack-staging": "NODE_ENV=production webpack -p --config webpack.config.staging.js --progress --color",
+    "build:webpack-production": "NODE_ENV=production webpack -p --config webpack.config.production.js --progress --color",
+    "build:staging": "npm run clean && npm run build:webpack-staging",
+    "build:production": "npm run clean && npm run build:webpack-production",
     "test:lint": "eslint ./src --ext .js --cache"
   },
   "author": "Daniel Wyatt <daniel@dewyatt.com> (http://www.dewyatt.com)",

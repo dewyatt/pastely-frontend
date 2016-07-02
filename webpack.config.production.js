@@ -65,7 +65,7 @@ const config = {
   },
   resolve: {
     alias: {
-      config: path.resolve('./config.prod.json')
+      config: path.resolve('./config.production.json')
     }
   },
   plugins: [
