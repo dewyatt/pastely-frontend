@@ -1,0 +1,46 @@
+---
+- hosts: all
+  gather_facts: no
+  vars:
+    - git_url: https://github.com/dewyatt/pastely-frontend.git
+    - html_path: /var/lib/nginx/html
+    - build_path: /tmp/pastely
+  tasks:
+  # make sure we have our required arguments
+  - fail: msg="You have not supplied all required arguments"
+    when: (deploy_environment == "") or (git_sha1 == "") or (server_name == "")
+  # install required OS packages
+  - apk: update_cache=yes
+  - apk: upgrade=yes
+  - apk: name={{ item }} state=latest
+    with_items:
+      - git
+      - nginx
+      - nodejs
+
+  - git: repo={{ git_url }} dest={{ build_path }} version={{ git_sha1 }}
+
+  - npm: path={{ build_path }}
+
+  - command: npm run build:{{ deploy_environment }}
+    args:
+      chdir: "{{ build_path }}"
+
+  - shell: mv {{ build_path }}/dist/* {{ html_path }}
+
+  - template: src=nginx.conf.j2
+              dest=/etc/nginx/nginx.conf
+              owner=root
+              group=root
+              mode=0644
+
+  - template: src=nginx_default.conf.j2
+              dest=/etc/nginx/conf.d/default.conf
+              owner=root
+              group=root
+              mode=0644
+
+  - file: path="{{ build_path }}" state=absent
+  - file: path=/tmp/deploy state=absent
+
+# vim: tw=80 ts=2:
