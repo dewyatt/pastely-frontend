@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf dist/*",
+    "clean": "rimraf dist/* && cp -a static/ dist/",
     "start": "NODE_ENV=development webpack-dev-server --config webpack.config.local.js --host 0.0.0.0 --progress --color",
     "build:webpack-staging": "NODE_ENV=production webpack -p --config webpack.config.staging.js --progress --color",
     "build:webpack-production": "NODE_ENV=production webpack -p --config webpack.config.production.js --progress --color",
