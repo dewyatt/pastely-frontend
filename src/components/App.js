@@ -144,7 +144,7 @@ To the left, you can see the name of this particular file, and a button to add n
         let header = <div className='mui--text-headline'>Saved!</div>;
         let content =
           <div>
-            Share this URL: <a href={paste_url}>{paste_url}</a>
+            Share this URL: <a href={paste_url} target='_blank'>{paste_url}</a>
           </div>
         ;
         this.openModal(header, content);
