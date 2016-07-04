@@ -6,6 +6,8 @@ The technologies used include:
 * React + React-Router
 * Webpack + NPM
 * MUI (muicss)
+* Docker
+* Ansible
 * Kubernetes
 
 # What is it?
