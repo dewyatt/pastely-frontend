@@ -43,7 +43,7 @@ class App extends React.Component {
 
     files: [
       {
-        id: uuid.v4(),
+        id: '499e073b-c28d-46b6-a836-ac1fe150547d',
         name: 'Welcome',
         contents: `\
 This is a file, which is part of a paste.
@@ -56,7 +56,7 @@ To the left, you can see the name of this particular file, and a button to add n
       }
     ],
 
-    selected_file_id: null,
+    selected_file_id: '499e073b-c28d-46b6-a836-ac1fe150547d',
 
     modified: false,
 
@@ -64,11 +64,6 @@ To the left, you can see the name of this particular file, and a button to add n
     modal_header: '',
     modal_content: ''
   };
-
-  constructor(props) {
-    super(props);
-    this.state.selected_file_id = this.state.files[0].id;
-  }
 
   fetchPaste() {
     let url = `${API_BASE_URL}/view/${this.props.params.id}`
