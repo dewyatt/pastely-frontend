@@ -1,6 +1,6 @@
 # Pastely Frontend
 
-This is the frontend of [Pastely](http://dewyatt.pastely.com), an online code paste service.
+This is the frontend of Pastely, an online code paste service.
 
 The technologies used include:
 * React + React-Router
